@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM FOR US</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: "Professional Dark Theme" - Background: slate-900, Text: slate-200, Primary: sky-500 -->
+    <!-- Application Structure Plan: The structure remains thematic. The "Tugasan Kumpulan" section is now split into two distinct options: a static "Tugasan Umum" and an interactive "Penjana Tugasan Rawak" for speaker flexibility. -->
+    <!-- Visualization & Content Choices: The task section now uses a tabbed interface ("UMUM", "RAWAK") for a cleaner layout, allowing the speaker to switch between a general task and the interactive random task generator. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* bg-slate-900 */
+            color: #e2e8f0; /* text-slate-200 */
+        }
+        .font-caveat {
+            font-family: 'Caveat', cursive;
+        }
+        .tab-button.active, .task-tab-button.active {
+            background-color: #0ea5e9; /* bg-sky-500 */
+            color: #ffffff;
+            border-color: #0ea5e9;
+        }
+        .tab-content, .task-tab-content {
+            display: none;
+        }
+        .tab-content.active, .task-tab-content.active {
+            display: block;
+        }
+        .example-button.active {
+            background-color: #0ea5e9; /* bg-sky-500 */
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-slate-900">
+
+    <!-- Header & Navigation -->
+    <header class="bg-slate-800/80 backdrop-blur-lg sticky top-0 z-50 shadow-md shadow-slate-900/50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-bold text-sky-500">NotebookLM</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#pengenalan" class="text-slate-300 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Pengenalan</a>
+                        <a href="#proses" class="text-slate-300 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Proses</a>
+                        <a href="#contoh" class="text-slate-300 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Contoh</a>
+                        <a href="#tugasan" class="text-slate-300 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Tugasan</a>
+                        <a href="#tips" class="text-slate-300 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Tips</a>
+                        <a href="#rumusan" class="text-slate-300 hover:text-sky-500 px-3 py-2 rounded-md text-sm font-medium">Rumusan</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+
+        <!-- Section 1: Pengenalan -->
+        <section id="pengenalan" class="py-16">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-100">
+                    Memperkasakan Pengajaran Anda dengan <span class="text-sky-500">NotebookLM</span>
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg text-slate-300">
+                    Ubah cara anda menyediakan bahan bantu mengajar. NotebookLM bukan sekadar carian internet, ia adalah pembantu penyelidik peribadi anda yang dibina berdasarkan sumber-sumber anda sendiri.
+                </p>
+            </div>
+            
+            <div class="mt-12 max-w-3xl mx-auto">
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg border-l-4 border-sky-500">
+                    <blockquote class="text-xl italic text-slate-300">
+                        "I hear and I forget. I see and I remember. I do and I understand."
+                    </blockquote>
+                    <p class="mt-4 text-right font-semibold text-slate-400">- Confucius</p>
+                </div>
+            </div>
+
+             <div class="mt-20 text-center">
+                 <h2 class="text-3xl font-bold tracking-tight text-slate-100">Penyelesaian untuk Cabaran Anda</h2>
+                 <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 max-w-7xl mx-auto">
+                    <div class="bg-slate-800 p-8 rounded-lg shadow-md text-center">
+                        <div class="mx-auto mb-4 bg-sky-500/10 text-sky-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">⏱️</div>
+                        <h3 class="font-semibold text-lg text-slate-100">Masa Terhad?</h3>
+                        <p class="mt-2 text-slate-400">Kurangkan masa penyediaan bahan.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-lg shadow-md text-center">
+                        <div class="mx-auto mb-4 bg-sky-500/10 text-sky-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">📚</div>
+                        <h3 class="font-semibold text-lg text-slate-100">Bahan PdP Terhad?</h3>
+                        <p class="mt-2 text-slate-400">Jana pelbagai bahan dari sumber sedia ada.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-lg shadow-md text-center">
+                        <div class="mx-auto mb-4 bg-sky-500/10 text-sky-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">👥</div>
+                        <h3 class="font-semibold text-xl text-slate-100">Pelajar Pelbagai Aras?</h3>
+                        <p class="mt-2 text-slate-400">Sediakan bahan yang disesuaikan.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-lg shadow-md text-center">
+                        <div class="mx-auto mb-4 bg-sky-500/10 text-sky-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">💡</div>
+                        <h3 class="font-semibold text-lg text-slate-100">Jana Idea Kreatif</h3>
+                        <p class="mt-2 text-slate-400">Dapatkan cadangan aktiviti dan projek.</p>
+                    </div>
+                    <div class="bg-slate-800 p-8 rounded-lg shadow-md text-center">
+                        <div class="mx-auto mb-4 bg-sky-500/10 text-sky-500 w-16 h-16 rounded-full flex items-center justify-center text-3xl font-bold">✨</div>
+                        <h3 class="font-semibold text-lg text-slate-100">Permudah Topik</h3>
+                        <p class="mt-2 text-slate-400">Terangkan konsep kompleks dengan mudah.</p>
+                    </div>
+                </div>
+             </div>
+        </section>
+
+        <!-- Section 2: Proses Penggunaan NotebookLM -->
+        <section id="proses" class="py-16 bg-slate-800 rounded-lg shadow-lg">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-100">Manual Visual: Proses 4 Langkah</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                    Ikuti panduan ini untuk mula menggunakan NotebookLM. Klik pada setiap langkah untuk melihat butirannya.
+                </p>
+            </div>
+            <div class="mt-12 max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-center border-b border-slate-700">
+                    <button class="tab-button border-b-2 border-transparent py-3 px-6 font-medium text-slate-300 hover:text-sky-500 w-full md:w-auto text-center transition" data-target="tab-1">1. Sediakan Sumber</button>
+                    <button class="tab-button border-b-2 border-transparent py-3 px-6 font-medium text-slate-300 hover:text-sky-500 w-full md:w-auto text-center transition" data-target="tab-2">2. Muat Naik</button>
+                    <button class="tab-button border-b-2 border-transparent py-3 px-6 font-medium text-slate-300 hover:text-sky-500 w-full md:w-auto text-center transition" data-target="tab-3">3. Jana Bahan</button>
+                    <button class="tab-button border-b-2 border-transparent py-3 px-6 font-medium text-slate-300 hover:text-sky-500 w-full md:w-auto text-center transition" data-target="tab-4">4. Simpan & Susun</button>
+                </div>
+                <div class="mt-8 bg-slate-900 p-6 md:p-8 rounded-lg">
+                    <div id="tab-1" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-sky-500">Langkah 1: Sediakan "Otak" NotebookLM</h3>
+                                <p class="mt-4 text-slate-300">Kumpulkan semua bahan rujukan digital (PDF, Teks, Google Docs). Bahan-bahan ini akan menjadi sumber pengetahuan eksklusif untuk AI anda.</p>
+                                <div class="mt-4 p-4 bg-sky-500/10 border-l-4 border-sky-500 text-sky-200 rounded-r-lg">
+                                    <strong>Tips Pro:</strong> Semakin berkualiti sumber anda, semakin bijak jawapan yang akan dijana.
+                                </div>
+                            </div>
+                            <div class="p-6 bg-slate-800 rounded-lg border-2 border-dashed border-slate-600">
+                                <p class="font-semibold text-slate-300">Contoh Folder Projek:</p>
+                                <div class="mt-3 space-y-2">
+                                    <div class="bg-slate-700 p-2 rounded flex items-center gap-2">📄 <span class="font-mono text-sm text-slate-300">Bab_2_Data.pdf</span></div>
+                                    <div class="bg-slate-700 p-2 rounded flex items-center gap-2">📄 <span class="font-mono text-sm text-slate-300">Bab_3_Algoritma.pdf</span></div>
+                                    <div class="bg-slate-700 p-2 rounded flex items-center gap-2">📄 <span class="font-mono text-sm text-slate-300">Artikel_ASCII.docx</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-sky-500">Langkah 2: Muat Naik Sumber Anda</h3>
+                                <p class="mt-4 text-slate-300">Layari <a href="https://notebooklm.google.com" target="_blank" class="font-semibold underline text-sky-500">notebooklm.google.com</a>, cipta *notebook* baru, dan cari panel "Sources". Klik pada butang <strong>"+ Add sources"</strong>.</p>
+                            </div>
+                            <div class="p-6 bg-slate-800 rounded-lg border-2 border-dashed border-slate-600 h-full">
+                                <p class="font-semibold text-slate-300">Simulasi Antara Muka:</p>
+                                <div class="mt-3 h-32 border border-slate-600 rounded p-4 flex flex-col justify-between">
+                                    <p class="text-sm text-slate-400">SOURCES</p>
+                                    <div class="bg-sky-500 text-white py-2 px-4 rounded-md text-center cursor-pointer">
+                                        + Add sources
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-3" class="tab-content">
+                         <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-sky-500">Langkah 3: Mula Berinteraksi</h3>
+                                <p class="mt-4 text-slate-300">Gunakan ruangan perbualan di bahagian bawah untuk memberi arahan atau bertanya soalan kepada AI. Jadilah spesifik untuk hasil terbaik.</p>
+                            </div>
+                            <div class="p-6 bg-slate-800 rounded-lg border-2 border-dashed border-slate-600 h-full">
+                                <p class="font-semibold text-slate-300">Simulasi Ruangan Perbualan:</p>
+                                <div class="mt-3 h-32 border border-slate-600 rounded p-2 flex flex-col justify-end">
+                                    <div class="w-full bg-slate-700 p-3 rounded-md flex justify-between items-center">
+                                        <span class="text-slate-400">Taip arahan anda di sini...</span>
+                                        <span class="text-2xl">▶️</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-4" class="tab-content">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div>
+                                <h3 class="text-2xl font-bold text-sky-500">Langkah 4: Simpan & Susun Hasil</h3>
+                                <p class="mt-4 text-slate-300">Setiap jawapan yang dijana akan mempunyai ikon penanda buku (🔖). Klik ikon ini untuk menyimpan jawapan ke dalam ruangan nota peribadi anda.</p>
+                            </div>
+                            <div class="p-6 bg-slate-800 rounded-lg border-2 border-dashed border-slate-600 h-full">
+                                <p class="font-semibold text-slate-300">Simulasi Hasil Janaan:</p>
+                                <div class="mt-3 h-32 border border-slate-600 rounded p-4 relative">
+                                    <p class="text-sm text-slate-300">1. Sistem nombor perduaan...</p>
+                                    <p class="text-sm mt-1 text-slate-300">2. Setiap digit dipanggil 'bit'...</p>
+                                    <div class="absolute top-2 right-2 bg-slate-700 p-2 rounded-md cursor-pointer text-xl">🔖</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Contoh Penggunaan -->
+        <section id="contoh" class="py-16">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-100">Lihat Contoh dalam Tindakan</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                    Berikut adalah beberapa contoh bagaimana anda boleh menggunakan NotebookLM untuk subjek Asas Sains Komputer.
+                </p>
+            </div>
+            <div class="mt-12 max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button class="example-button bg-slate-700 text-slate-200 hover:bg-sky-500 hover:text-white py-2 px-4 rounded-full font-semibold transition" data-target="example-1">Jana Ringkasan</button>
+                    <button class="example-button bg-slate-700 text-slate-200 hover:bg-sky-500 hover:text-white py-2 px-4 rounded-full font-semibold transition" data-target="example-2">Cipta Kuiz</button>
+                    <button class="example-button bg-slate-700 text-slate-200 hover:bg-sky-500 hover:text-white py-2 px-4 rounded-full font-semibold transition" data-target="example-3">Rancang Aktiviti</button>
+                </div>
+                <div class="mt-8 p-6 bg-slate-800 rounded-lg border border-slate-700 shadow-lg min-h-[250px]">
+                    <div id="example-1" class="example-content">
+                        <p class="font-semibold text-slate-400">ARAHAN ANDA:</p>
+                        <p class="mt-2 text-slate-200">"Berdasarkan Bab 2, ringkaskan konsep Sistem Nombor Perduaan dalam 5 poin utama yang mudah difahami pelajar Tingkatan 2."</p>
+                        <hr class="my-4 border-slate-700">
+                        <p class="font-semibold text-slate-400">HASIL JANAAN:</p>
+                        <ul class="list-decimal list-inside mt-2 text-slate-200 space-y-1">
+                            <li>Sistem nombor perduaan hanya menggunakan dua digit: 0 dan 1.</li>
+                            <li>Setiap digit dipanggil 'bit'.</li>
+                            <li>Ia adalah bahasa asas yang difahami oleh komputer.</li>
+                            <li>Nilai tempatnya adalah berasaskan kuasa 2 (cth: 1, 2, 4, 8, ...).</li>
+                            <li>Penukaran dari perpuluhan ke perduaan boleh dilakukan menggunakan kaedah bahagi dengan 2.</li>
+                        </ul>
+                    </div>
+                    <div id="example-2" class="example-content" style="display: none;">
+                        <p class="font-semibold text-slate-400">ARAHAN ANDA:</p>
+                        <p class="mt-2 text-slate-200">"Jana 3 soalan aneka pilihan (MCQ) berserta jawapan daripada Bab 3 mengenai perbezaan antara pseudokod dan carta alir."</p>
+                        <hr class="my-4 border-slate-700">
+                        <p class="font-semibold text-slate-400">HASIL JANAAN:</p>
+                        <p class="mt-2 text-slate-200">1. Manakah antara berikut mewakili algoritma menggunakan simbol grafik?<br> A. Pseudokod B. Carta Alir C. Kod Atur Cara<br><b class="text-sky-500">Jawapan: B</b></p>
+                    </div>
+                    <div id="example-3" class="example-content" style="display: none;">
+                        <p class="font-semibold text-slate-400">ARAHAN ANDA:</p>
+                        <p class="mt-2 text-slate-200">"Saya perlukan satu idea aktiviti dalam kelas selama 15 minit untuk menunjukkan bagaimana algoritma 'search' berfungsi menggunakan contoh kehidupan seharian."</p>
+                        <hr class="my-4 border-slate-700">
+                        <p class="font-semibold text-slate-400">HASIL JANAAN:</p>
+                        <p class="mt-2 text-slate-200"><b class="text-sky-500">Aktiviti "Mencari Harta Karun Kamus":</b><br>1. Beri setiap kumpulan sebuah kamus.<br>2. Minta mereka mencari satu perkataan yang sukar (cth: "swakarsa").<br>3. Kumpulan pertama yang menjumpai perkataan tersebut dan menerangkan langkah carian mereka (cth: "Buka bahagian S, kemudian cari SW...") dikira pemenang.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Tugasan Kumpulan -->
+        <section id="tugasan" class="py-16">
+             <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-100">Sesi Tugasan Amali</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                    Pilih jenis tugasan di bawah untuk dilaksanakan secara berkumpulan.
+                </p>
+            </div>
+            <div class="mt-12 max-w-4xl mx-auto">
+                <div class="flex justify-center border-b border-slate-700">
+                    <button class="task-tab-button border-b-2 border-transparent py-3 px-6 font-semibold text-slate-300 hover:text-sky-500 w-full md:w-auto text-center transition" data-target="task-umum">UMUM</button>
+                    <button class="task-tab-button border-b-2 border-transparent py-3 px-6 font-semibold text-slate-300 hover:text-sky-500 w-full md:w-auto text-center transition" data-target="task-rawak">RAWAK</button>
+                </div>
+                <div class="mt-8">
+                    <!-- Tugasan Umum -->
+                    <div id="task-umum" class="task-tab-content bg-slate-800 p-8 rounded-lg shadow-lg border border-slate-700">
+                        <h3 class="text-2xl font-bold text-sky-500">Tugasan Umum</h3>
+                        <p class="mt-2 text-slate-300">Sesuai untuk semua kumpulan melaksanakan tugasan yang sama.</p>
+                        <div class="mt-6 border-t border-slate-700 pt-6">
+                            <h4 class="font-semibold text-lg text-slate-100">Arahan (Jumlah Masa: 30 Minit):</h4>
+                            <ol class="list-decimal list-inside mt-4 space-y-2 text-slate-200">
+                                <li>Pilih satu topik/bab daripada subjek anda.</li>
+                                <li>Muat naik SATU sumber ke NotebookLM.</li>
+                                <li><strong>(15 Minit)</strong> Gunakan NotebookLM untuk menjana & menyimpan:
+                                    <ul class="list-disc list-inside ml-6 mt-1">
+                                        <li>Satu ringkasan topik.</li>
+                                        <li>Tiga soalan kuiz berserta jawapan.</li>
+                                        <li>Satu idea aktiviti P&P yang kreatif.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>(15 Minit)</strong> Bersedia untuk berkongsi dan membentangkan hasil anda.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- Penjana Tugasan Rawak -->
+                    <div id="task-rawak" class="task-tab-content bg-slate-800 p-8 rounded-lg shadow-lg border border-slate-700">
+                        <h3 class="text-2xl font-bold text-sky-500">Penjana Tugasan Rawak</h3>
+                        <div id="task-generator" class="mt-6 flex flex-col gap-4">
+                            <label for="group-count-input" class="font-semibold text-slate-100">Masukkan bilangan kumpulan (1-10):</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="group-count-input" min="1" max="10" placeholder="Cth: 5" class="w-full px-4 py-2 bg-slate-900 border border-slate-600 rounded-md focus:ring-2 focus:ring-sky-500 focus:outline-none">
+                                <button id="generate-tasks-btn" class="bg-sky-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-sky-600 transition whitespace-nowrap">Jana Tugasan</button>
+                            </div>
+                            <div id="error-message" class="text-red-500 text-sm"></div>
+                        </div>
+                        <div id="task-display-container" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Tugasan yang dijana akan muncul di sini -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Tips -->
+        <section id="tips" class="py-16">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-100">Tips & Amalan Terbaik</h2>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-lg text-sky-500">Spesifik Itu Penting</h3>
+                    <p class="mt-2 text-slate-400">Lebih jelas arahan anda, lebih tepat jawapan yang diterima. Beri konteks seperti "terangkan kepada pelajar 14 tahun".</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-lg text-sky-500">Sumber Adalah Raja</h3>
+                    <p class="mt-2 text-slate-400">Pastikan sumber yang anda muat naik adalah tepat dan berkualiti. NotebookLM bergantung sepenuhnya pada bahan tersebut.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-lg text-sky-500">Sentiasa Semak Fakta</h3>
+                    <p class="mt-2 text-slate-400">AI adalah pembantu. Anda, sebagai guru, adalah pakar. Sentiasa semak semula hasil yang dijana untuk ketepatan.</p>
+                </div>
+                <div class="bg-slate-800 p-6 rounded-lg shadow-md">
+                    <h3 class="font-semibold text-lg text-sky-500">Gabungkan Sumber</h3>
+                    <p class="mt-2 text-slate-400">Tanya soalan yang memerlukan maklumat daripada beberapa sumber serentak untuk jawapan yang komprehensif.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Rumusan -->
+        <section id="rumusan" class="py-16">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-slate-100">Rumusan Bengkel</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                    NotebookLM bukan pengganti guru, tetapi rakan strategik yang membantu anda menjadi lebih efisien, kreatif, dan fokus kepada perkara yang paling penting: pelajar anda.
+                </p>
+            </div>
+            <div class="mt-12 max-w-4xl mx-auto bg-slate-800 p-8 rounded-lg shadow-lg border border-slate-700">
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-4">
+                        <span class="text-sky-500 text-2xl mt-1">✓</span>
+                        <div>
+                            <h3 class="font-semibold text-slate-100">Automasi & Kecekapan</h3>
+                            <p class="text-slate-400">Jimatkan masa dengan menjana ringkasan, kuiz, dan draf bahan P&P secara automatik.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-sky-500 text-2xl mt-1">✓</span>
+                        <div>
+                            <h3 class="font-semibold text-slate-100">Inovasi & Kreativiti</h3>
+                            <p class="text-slate-400">Cetuskan idea baharu untuk aktiviti P&P dan kaedah penerangan yang lebih menarik.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-4">
+                        <span class="text-sky-500 text-2xl mt-1">✓</span>
+                        <div>
+                            <h3 class="font-semibold text-slate-100">Fokus Kepada Pelajar</h3>
+                            <p class="text-slate-400">Dengan lebih banyak masa, anda boleh memberi lebih tumpuan kepada interaksi dan pembangunan pelajar.</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="mt-8 border-t border-slate-700 pt-6">
+                     <blockquote class="text-lg italic text-slate-300 text-center">
+                        "The illiterate of the 21st century will not be those who cannot read and write, but those who cannot learn, unlearn, and relearn."
+                    </blockquote>
+                    <p class="mt-2 text-center text-sm text-slate-400">(Maksud: "Buta huruf abad ke-21 bukanlah mereka yang tidak boleh membaca dan menulis, tetapi mereka yang tidak boleh belajar, berhenti belajar, dan belajar semula.")</p>
+                    <p class="mt-4 text-right font-semibold text-slate-400">- Alvin Toffler</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 border-t border-slate-700">
+        <div class="container mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm text-slate-400">Dibangunkan oleh Unit TMK Sektor Pembelajaran JPN Pahang | &copy; 2025</p>
+            <p class="font-caveat text-base text-slate-300 mt-2"> 🔷A.Shamil 🔶🔸</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Tab Setup ---
+            function setupTabs(buttonClass, contentClass, initialTarget) {
+                const buttons = document.querySelectorAll(`.${buttonClass}`);
+                const contents = document.querySelectorAll(`.${contentClass}`);
+                
+                function activate(targetId) {
+                    contents.forEach(content => {
+                        content.style.display = 'none';
+                        if (content.id === targetId) {
+                            content.style.display = 'block';
+                        }
+                    });
+                    buttons.forEach(button => {
+                        button.classList.remove('active');
+                        if (button.dataset.target === targetId) {
+                            button.classList.add('active');
+                        }
+                    });
+                }
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        activate(button.dataset.target);
+                    });
+                });
+                
+                activate(initialTarget);
+            }
+
+            setupTabs('tab-button', 'tab-content', 'tab-1');
+            setupTabs('example-button', 'example-content', 'example-1');
+            setupTabs('task-tab-button', 'task-tab-content', 'task-umum');
+
+            // --- Task Generator ---
+            const generateBtn = document.getElementById('generate-tasks-btn');
+            const taskDisplayContainer = document.getElementById('task-display-container');
+            const groupCountInput = document.getElementById('group-count-input');
+            const errorMessage = document.getElementById('error-message');
+
+            const allTasks = [
+                { subject: 'Sejarah', task: 'Muat naik teks ringkas mengenai Kesultanan Melayu Melaka. Jana satu kuiz 3 soalan aneka pilihan (MCQ) berserta jawapan.', outcome: 'Satu set kuiz 3 soalan MCQ.' },
+                { subject: 'Sains', task: 'Muat naik nota ringkas mengenai proses fotosintesis. Minta NotebookLM terangkan proses tersebut menggunakan analogi yang mudah difahami oleh pelajar Tingkatan 1.', outcome: 'Satu penerangan analogi mengenai fotosintesis.' },
+                { subject: 'Bahasa Melayu', task: 'Muat naik satu sajak. Minta NotebookLM analisis tema dan persoalan utama dalam sajak tersebut.', outcome: 'Satu analisis ringkas tema dan persoalan sajak.' },
+                { subject: 'Matematik', task: 'Muat naik nota mengenai Teorem Pythagoras. Jana 2 soalan penyelesaian masalah yang berbeza beserta langkah kerja.', outcome: 'Dua soalan penyelesaian masalah beserta langkah kerja.' },
+                { subject: 'Geografi', task: 'Muat naik teks mengenai pembentukan awan dan hujan. Jana satu carta alir ringkas dalam bentuk teks yang menerangkan proses tersebut.', outcome: 'Satu carta alir teks mengenai proses hujan.' },
+                { subject: 'Pendidikan Islam', task: 'Muat naik teks mengenai kisah Nabi Muhammad SAW. Jana 3 nilai murni atau iktibar yang boleh diambil daripada kisah tersebut.', outcome: 'Tiga poin nilai murni atau iktibar.' },
+                { subject: 'Reka Bentuk & Teknologi', task: 'Muat naik nota mengenai lakaran reka bentuk. Minta NotebookLM berikan satu idea aktiviti P&P untuk mengajar kepentingan lakaran.', outcome: 'Satu draf idea aktiviti P&P.' },
+                { subject: 'Sejarah', task: 'Muat naik teks mengenai Zaman Darurat. Jana satu garis masa (timeline) dalam bentuk poin-poin ringkas.', outcome: 'Satu garis masa ringkas Zaman Darurat.' },
+                { subject: 'Sains', task: 'Muat naik teks mengenai sistem suria. Jana satu jadual yang membandingkan ciri-ciri planet Marikh dan Zuhal.', outcome: 'Satu jadual perbandingan antara Marikh dan Zuhal.' },
+                { subject: 'Bahasa Melayu', task: 'Muat naik satu petikan cerpen. Jana 3 soalan pemahaman aras tinggi (KBAT) berdasarkan petikan itu.', outcome: 'Tiga soalan pemahaman KBAT.' },
+            ];
+
+            generateBtn.addEventListener('click', () => {
+                const groupCount = parseInt(groupCountInput.value);
+                
+                // Validation
+                if (isNaN(groupCount) || groupCount < 1 || groupCount > 10) {
+                    errorMessage.textContent = 'Sila masukkan nombor antara 1 hingga 10.';
+                    taskDisplayContainer.innerHTML = '';
+                    return;
+                }
+                errorMessage.textContent = '';
+                
+                // Shuffle tasks
+                const shuffledTasks = allTasks.sort(() => 0.5 - Math.random());
+                
+                taskDisplayContainer.innerHTML = ''; // Clear previous tasks
+
+                for (let i = 0; i < groupCount; i++) {
+                    const task = shuffledTasks[i];
+                    const taskCard = `
+                        <div class="bg-slate-900 border border-slate-700 rounded-lg p-4 flex flex-col h-full transform hover:scale-105 transition-transform duration-300">
+                            <div class="flex justify-between items-start">
+                                <h4 class="text-lg font-bold text-sky-500">Kumpulan ${i + 1}</h4>
+                                <div class="text-xl">🎯</div>
+                            </div>
+                            <p class="mt-1 text-xs font-semibold text-slate-400">Subjek: ${task.subject}</p>
+                            <p class="mt-3 text-slate-300 text-sm flex-grow">${task.task}</p>
+                            <div class="mt-4 border-t border-slate-700 pt-3">
+                                <h5 class="font-semibold text-slate-200 text-sm">Hasil yang Diinginkan:</h5>
+                                <ul class="list-disc list-inside mt-2 text-slate-400 text-xs space-y-1">
+                                    <li>${task.outcome}</li>
+                                    <li>Bersedia untuk pembentangan ringkas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    `;
+                    taskDisplayContainer.innerHTML += taskCard;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+ 
